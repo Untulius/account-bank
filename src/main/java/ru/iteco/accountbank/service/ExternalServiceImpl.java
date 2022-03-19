@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import ru.iteco.accountbank.model.ExternalInfo;
+import ru.iteco.accountbank.model.annotation.CacheResult;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -26,6 +27,7 @@ public class ExternalServiceImpl implements ExternalService {
         externalInfoHashMap.put(4, new ExternalInfo(4, "information"));
     }
 
+    @CacheResult
     public ExternalInfo getExternalInfo(Integer id){
         log.info("getExternalInfo({}) = {}", id, externalInfoHashMap.get(id));
         return externalInfoHashMap.get(id);
